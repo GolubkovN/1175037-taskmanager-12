@@ -394,7 +394,7 @@ render(filterElement, createBoardTemplate(), `afterend`);
 const boardElement = document.querySelector(`.board`);
 render(boardElement, createSortingTemplate(), `afterbegin`);
 
-const tasksListElement = boardElement.querySelector(`.board__tasks`)
+const tasksListElement = boardElement.querySelector(`.board__tasks`);
 for (let i = 0; i < TASKS_COUNT; i++) {
   render(tasksListElement, createTaskTemplate(), `afterbegin`);
 }
