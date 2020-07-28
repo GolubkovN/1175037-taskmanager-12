@@ -2,11 +2,7 @@
 
 const TASKS_COUNT = 3;
 
-const render = (container, template, place) => {
-  container.insertAdjacentHTML(place, template);
-};
-
-// create and render menu
+// create menu
 const createMenuTemplate = () => {
   return (
     `<section class="control__btn-wrap">
@@ -40,11 +36,7 @@ const createMenuTemplate = () => {
   );
 };
 
-const HeaderElement = document.querySelector(`.main__control`);
-
-render(HeaderElement, createMenuTemplate(), `beforeend`);
-
-// create and render filter
+// create  filter
 const createFilterTemplate = () => {
   return (
     `<section class="main__filter filter container">
@@ -109,9 +101,7 @@ const createFilterTemplate = () => {
   );
 };
 
-render(HeaderElement, createFilterTemplate(), `afterend`);
-
-// create and render tsak board
+// create tsak board
 const createBoardTemplate = () => {
   return (
     `<section class="board container">
@@ -122,12 +112,8 @@ const createBoardTemplate = () => {
   );
 };
 
-const filterElement = document.querySelector(`.main__filter`);
-
-render(filterElement, createBoardTemplate(), `afterend`);
-
-// create and render sorting block
-const createSortingTemolate = () => {
+// create sorting block
+const createSortingTemplate = () => {
   return (
     `<div class="board__filter-list">
       <a href="#" class="board__filter" data-sort-type="default">SORT BY DEFAULT</a>
@@ -137,11 +123,7 @@ const createSortingTemolate = () => {
   );
 };
 
-const BoardElement = document.querySelector(`.board`);
-
-render(BoardElement, createSortingTemolate(), `afterbegin`);
-
-// create and render tasks
+// create tasks
 const createTaskTemplate = () => {
   return (
     `<article class="card card--black">
@@ -190,13 +172,7 @@ const createTaskTemplate = () => {
   );
 };
 
-const TasksListElement = BoardElement.querySelector(`.board__tasks`)
-
-for (let i = 0; i < TASKS_COUNT; i++) {
-  render(TasksListElement, createTaskTemplate(), `afterbegin`);
-}
-
-// create and render edit-task
+// create edit-task
 const createTaskEditTemplate = () => {
   return (
     `<article class="card card--edit card--yellow card--repeat">
@@ -399,13 +375,29 @@ const createTaskEditTemplate = () => {
   );
 };
 
-render(TasksListElement, createTaskEditTemplate(), `afterbegin`);
-
-// create and render load button
-const createLoadBtnTemplate = () => {
-  return (
-    `<button class="load-more" type="button">load more</button>`
-  )
+const render = (container, template, place) => {
+  container.insertAdjacentHTML(place, template);
 };
 
-render(BoardElement, createLoadBtnTemplate(), `beforeend`);
+// create load button
+const createLoadBtnTemplate = () => `<button class="load-more" type="button">load more</button>`;
+
+// render components
+const headerElement = document.querySelector(`.main__control`);
+render(headerElement, createMenuTemplate(), `beforeend`);
+
+render(headerElement, createFilterTemplate(), `afterend`);
+
+const filterElement = document.querySelector(`.main__filter`);
+render(filterElement, createBoardTemplate(), `afterend`);
+
+const boardElement = document.querySelector(`.board`);
+render(boardElement, createSortingTemplate(), `afterbegin`);
+
+const tasksListElement = boardElement.querySelector(`.board__tasks`)
+for (let i = 0; i < TASKS_COUNT; i++) {
+  render(tasksListElement, createTaskTemplate(), `afterbegin`);
+}
+
+render(tasksListElement, createTaskEditTemplate(), `afterbegin`);
+render(boardElement, createLoadBtnTemplate(), `beforeend`);
