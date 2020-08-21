@@ -1,6 +1,7 @@
 import {
   getRandomInteger,
   getRundomIndex,
+  getRandomBoolean
 } from '../utils.js';
 
 import {DESCRIPTIONS, COLORS} from '../const.js';
@@ -57,7 +58,7 @@ export const generateTask = () => {
     dueDate,
     repeating,
     color,
-    isArchive: Boolean(getRandomInteger(0, 1)),
-    isFavorite: Boolean(getRandomInteger(0, 1)),
+    isArchive: getRandomBoolean(),
+    isFavorite: getRandomBoolean(),
   };
 };

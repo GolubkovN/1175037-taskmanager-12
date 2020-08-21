@@ -12,6 +12,8 @@ export const getRundomIndex = (arr) => {
   return arr[rundomIndex];
 };
 
+export const getRandomBoolean = () => Boolean(getRundomIndex(0, 1));
+
 export const renderTemplate = (container, template, place) => {
   container.insertAdjacentHTML(place, template);
 };
