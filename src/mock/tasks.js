@@ -2,7 +2,7 @@ import {
   getRandomInteger,
   getRundomIndex,
   getRandomBoolean
-} from '../utils.js';
+} from '../utils/common.js';
 
 import {DESCRIPTIONS, COLORS} from '../const.js';
 
