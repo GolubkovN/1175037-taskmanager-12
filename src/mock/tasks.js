@@ -37,6 +37,8 @@ const generateRepeating = () => {
   };
 };
 
+const generateId = () => Date.now() + parseInt(Math.random() * 10000, 10);
+
 export const generateTask = () => {
   const dueDate = generateDate();
   const description = getRandomElement(DESCRIPTIONS);
@@ -54,6 +56,7 @@ export const generateTask = () => {
     };
 
   return {
+    id: generateId(),
     description,
     dueDate,
     repeating,
