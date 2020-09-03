@@ -7,9 +7,16 @@ export const getRandomInteger = (a = 0, b = 1) => {
 };
 
 // random array index
-export const getRundomIndex = (arr) => {
-  const rundomIndex = getRandomInteger(0, arr.length - 1);
-  return arr[rundomIndex];
-};
+export const getRandomElement = (arr) => arr[getRandomInteger(0, arr.length - 1)];
 
-export const getRandomBoolean = () => Boolean(getRundomIndex(0, 1));
+export const getRandomBoolean = () => Boolean(getRandomInteger(0, 1));
+
+export const updateItem = (items, update) => {
+  const index = items.findIndex((item) => item.id === update.id);
+
+  if (index === -1) {
+    return items;
+  }
+
+  return [...items.slice(0, index), update, ...items.slice(index + 1)];
+};

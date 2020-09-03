@@ -1,6 +1,6 @@
 import {
   getRandomInteger,
-  getRundomIndex,
+  getRandomElement,
   getRandomBoolean
 } from '../utils/common.js';
 
@@ -37,10 +37,12 @@ const generateRepeating = () => {
   };
 };
 
+const generateId = () => Date.now() + parseInt(Math.random() * 10000, 10);
+
 export const generateTask = () => {
   const dueDate = generateDate();
-  const description = getRundomIndex(DESCRIPTIONS);
-  const color = getRundomIndex(COLORS);
+  const description = getRandomElement(DESCRIPTIONS);
+  const color = getRandomElement(COLORS);
   const repeating = dueDate === null
     ? generateRepeating()
     : {
@@ -54,6 +56,7 @@ export const generateTask = () => {
     };
 
   return {
+    id: generateId(),
     description,
     dueDate,
     repeating,
